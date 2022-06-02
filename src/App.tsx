@@ -1,18 +1,19 @@
-import './App.css';
-import { Routes, Route, Outlet } from 'react-router-dom';
-const ENDPOINT_RANDOM_USERS = 'https://randomuser.me/api/?results=20';
+import "./App.css";
+import { Routes, Route, Outlet } from "react-router-dom";
+import Home from "./pages/Home/Home";
+const ENDPOINT_RANDOM_USERS = "https://randomuser.me/api/?results=20";
 
 const Container = () => (
-  <div className='app'>
-    <div className='container'>
+  <div className="app">
+    <div className="container">
       <Outlet />
     </div>
   </div>
 );
 
-const Home = () => (
-  <>Get 20 users from ENDPOINT_RANDOM_USERS and display them: name only.</>
-);
+// const Home = () => (
+//   <>Get 20 users from ENDPOINT_RANDOM_USERS and display them: name only.</>
+// );
 
 const User = () => (
   <>
@@ -23,9 +24,9 @@ const User = () => (
 
 const App = () => (
   <Routes>
-    <Route path='/' element={<Container />}>
+    <Route path="/" element={<Container />}>
       <Route index element={<Home />} />
-      <Route path='*' element={<User />} />
+      <Route path="*" element={<User />} />
     </Route>
   </Routes>
 );
