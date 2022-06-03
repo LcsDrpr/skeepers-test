@@ -1,4 +1,22 @@
+.MuiCard-root {
+  height: 190px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.MuiCardHeader-root {
+  //   background-color: #ff645a;
+  background: rgb(255, 100, 90);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 100, 90, 1) 41%,
+    rgba(255, 204, 51, 1) 100%
+  );
+}
 .MuiCardHeader-avatar {
   width: 100% !important;
   justify-content: center !important;
+}
+.MuiCardContent-root {
+  font-family: "Roboto";
 }

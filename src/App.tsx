@@ -1,6 +1,7 @@
 import "./App.css";
 import { Routes, Route, Outlet } from "react-router-dom";
 import Home from "./pages/Home/Home";
+import User from "./pages/User/User";
 // const ENDPOINT_RANDOM_USERS = "https://randomuser.me/api/?results=20";
 
 const Container = () => (
@@ -26,7 +27,7 @@ const App = () => (
   <Routes>
     <Route path="/" element={<Container />}>
       <Route index element={<Home />} />
-      {/* <Route path="*" element={<User />} /> */}
+      <Route path="*" element={<User />} />
     </Route>
   </Routes>
 );
