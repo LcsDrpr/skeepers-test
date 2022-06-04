@@ -1,0 +1,43 @@
+.user-page {
+  .MuiCard-root {
+    max-width: 50%;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  .MuiCardHeader-root {
+    //   background-color: #ff645a;
+    background: rgb(255, 100, 90);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 100, 90, 1) 41%,
+      rgba(255, 204, 51, 1) 100%
+    );
+  }
+  .MuiCardContent-root {
+    p {
+      width: 100px;
+      text-align: left;
+      margin-top: 6px;
+    }
+    input {
+      width: 300px;
+    }
+    .button-stack {
+      justify-content: right;
+      margin-top: 20px;
+      p {
+        text-align: initial;
+        margin-top: 13px;
+        width: auto;
+      }
+    }
+    .MuiButton-root {
+      height: 40px;
+      width: 100px;
+      margin-left: 10px;
+    }
+  }
+}
