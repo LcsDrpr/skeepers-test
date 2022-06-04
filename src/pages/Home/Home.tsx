@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Box, Container } from "@mui/system";
-import { Grid } from "@mui/material";
+import { Grid, Link } from "@mui/material";
 import UserCard from "../../components/UserCard/UserCard";
 
 const Home = () => {
@@ -17,9 +17,12 @@ const Home = () => {
 
   console.log("DATA : ", users);
 
+  const getUserInfo = (info: any) => {
+    console.log("coucou : ", info);
+  };
+
   return (
-    <Container maxWidth="lg">
-      {/* <Box> */}
+    <Container maxWidth="lg" className="home-page">
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
@@ -29,19 +32,24 @@ const Home = () => {
         {users.map((user, index) => (
           <Grid item xs={12} sm={4} md={3}>
             {/* <p>{user.email}</p> */}
-            <UserCard
-              key={user.name.last}
-              title={user.name.title}
-              firstName={user.name.first}
-              lastName={user.name.last}
-              avatarUrl={user.picture.medium}
-            />
+            <Link href={"/" + index} onClick={() => getUserInfo(user)}>
+              <UserCard
+                index={index}
+                key={user.name.last}
+                title={user.name.title}
+                firstName={user.name.first}
+                lastName={user.name.last}
+                avatarUrl={user.picture.medium}
+              />
+            </Link>
           </Grid>
         ))}
       </Grid>
-      {/* </Box> */}
     </Container>
   );
 };
 
 export default Home;
+function getUserInfo() {
+  throw new Error("Function not implemented.");
+}

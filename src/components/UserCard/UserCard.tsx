@@ -4,6 +4,7 @@ import {
   CardContent,
   CardHeader,
   Divider,
+  Link,
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
@@ -14,6 +15,7 @@ interface InfosProps {
   lastName: string;
   key: string;
   avatarUrl: string;
+  index: number;
 }
 
 const UserCard = ({
@@ -22,6 +24,7 @@ const UserCard = ({
   title,
   lastName,
   avatarUrl,
+  index,
 }: InfosProps) => {
   const [newElevation, setNewElevation] = useState<number>(6);
 
@@ -37,6 +40,7 @@ const UserCard = ({
       elevation={newElevation}
       onMouseOver={onmouseover}
       onMouseOut={onmouseleave}
+      className="user-card"
     >
       <CardHeader
         avatar={
