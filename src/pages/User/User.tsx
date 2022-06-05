@@ -14,22 +14,35 @@ import {
   TextField,
 } from "@mui/material";
 import React, { Fragment, useState } from "react";
+import { useSelector } from "react-redux";
+import { useLocation } from "react-router";
+
 // import EditIcon from "@mui/icons-material/Edit";
+// import { userInfos } from "../../feature/userInfosSlice";
 
 const User = () => {
+  //   const userData = useSelector((userInfos: any) => userInfos.userInfos);
+
   //fake data supposed to be replaced by dynamic data get via Redux
-  const [userInfos, setUserInfos] = useState({
-    firstName: "Arthur",
-    lastName: "Schoppenhauer",
-    city: "Marseille",
-    email: "lesangdelaveine@gmail.com",
-  });
+  //   const [userInfos, setUserInfos] = useState({
+  //     firstName: "Arthur",
+  //     lastName: "Schoppenhauer",
+  //     city: "Marseille",
+  //     email: "lesangdelaveine@gmail.com",
+  //   });
+
+  const location = useLocation();
+
+  const [userInfos, setUserInfos] = useState<any>(location.state);
+
+  console.log("LOCATION : ", location.state);
 
   const [userInfosCopy, setUserInfosCopy] = useState({
     firstName: userInfos.firstName,
     lastName: userInfos.lastName,
     city: userInfos.city,
     email: userInfos.email,
+    avatarUrl: userInfos.avatarUrl,
   });
 
   const [disabledInput, setDisabledInput] = useState<boolean>(true);
@@ -55,14 +68,16 @@ const User = () => {
     }
   };
 
-  console.log("User Infos : ", userInfos, " User Infos Copy : ", userInfosCopy);
+  //   console.log("User Infos : ", userInfos, " User Infos Copy : ", userInfosCopy);
 
   const cancelEdit = () => {
     setUserInfosCopy(userInfos);
     setDisabledInput(!disabledInput);
     setEditActivated(!editActivated);
   };
-  console.log("User Infos : ", userInfos, " User Infos Copy : ", userInfosCopy);
+  //   console.log("User Infos : ", userInfos, " User Infos Copy : ", userInfosCopy);
+
+  //   console.log("USER PAGE :", userData);
 
   return (
     <Container maxWidth="lg" className="user-page">
@@ -76,7 +91,11 @@ const User = () => {
           <Card>
             <CardHeader
               avatar={
-                <Avatar alt="test" src="" sx={{ width: 60, height: 60 }} />
+                <Avatar
+                  alt="test"
+                  src={userInfosCopy.avatarUrl}
+                  sx={{ width: 60, height: 60 }}
+                />
               }
             ></CardHeader>
             <Divider></Divider>
@@ -165,6 +184,3 @@ const User = () => {
 };
 
 export default User;
-function editValues() {
-  throw new Error("Function not implemented.");
-}

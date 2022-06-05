@@ -38,6 +38,14 @@
       height: 40px;
       width: 100px;
       margin-left: 10px;
+      border-color: #ff645a;
+      color: #ff645a;
+      transition: all 0.2s ease;
+      &:hover {
+        background-color: #ff645a;
+        color: white;
+        border-color: white;
+      }
     }
   }
 }

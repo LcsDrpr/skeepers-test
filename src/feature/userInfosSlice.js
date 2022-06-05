@@ -13,7 +13,7 @@ export const userInfosSlice = createSlice({
 });
 
 export const { setUserData } = userInfosSlice.actions;
-export default userInfosSlice.reducers;
+export default userInfosSlice.reducer;
 
 // import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
