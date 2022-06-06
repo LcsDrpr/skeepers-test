@@ -4,11 +4,13 @@ import Home from "./pages/Home/Home";
 import User from "./pages/User/User";
 import { Provider } from "react-redux";
 import store from "./app/store";
+import Header from "./components/Header/Header";
 // import store from "./app/store";
 // const ENDPOINT_RANDOM_USERS = "https://randomuser.me/api/?results=20";
 
 const Container = () => (
   <div className="app">
+    <Header />
     <div className="container">
       <Outlet />
     </div>

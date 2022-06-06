@@ -1,4 +1,16 @@
 .user-page {
+  .back-button {
+    background-color: #ff645a;
+    color: white;
+    border-color: #ff645a;
+    transition: all 0.2s ease;
+    height: 40px;
+    width: 100px;
+    &:hover {
+      background-color: #ed5b51;
+      border-color: #ed5b51;
+    }
+  }
   .MuiCard-root {
     max-width: 50%;
     margin: 0 auto;

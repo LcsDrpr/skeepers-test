@@ -1,4 +1,9 @@
-import { CancelOutlined, DoneOutlined, EditSharp } from "@mui/icons-material";
+import {
+  ArrowBack,
+  CancelOutlined,
+  DoneOutlined,
+  EditSharp,
+} from "@mui/icons-material";
 import {
   Avatar,
   Card,
@@ -6,36 +11,23 @@ import {
   CardHeader,
   Container,
   Grid,
-  Input,
-  Typography,
   Stack,
   Divider,
   Button,
   TextField,
 } from "@mui/material";
-import React, { Fragment, useState } from "react";
+import { Fragment, useState } from "react";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
-// import EditIcon from "@mui/icons-material/Edit";
 // import { userInfos } from "../../feature/userInfosSlice";
 
 const User = () => {
   //   const userData = useSelector((userInfos: any) => userInfos.userInfos);
-
-  //fake data supposed to be replaced by dynamic data get via Redux
-  //   const [userInfos, setUserInfos] = useState({
-  //     firstName: "Arthur",
-  //     lastName: "Schoppenhauer",
-  //     city: "Marseille",
-  //     email: "lesangdelaveine@gmail.com",
-  //   });
-
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [userInfos, setUserInfos] = useState<any>(location.state);
-
-  console.log("LOCATION : ", location.state);
 
   const [userInfosCopy, setUserInfosCopy] = useState({
     firstName: userInfos.firstName,
@@ -48,6 +40,7 @@ const User = () => {
   const [disabledInput, setDisabledInput] = useState<boolean>(true);
   const [editActivated, setEditActivated] = useState<boolean>(false);
 
+  // function to activate the ability to modify textfields
   const editValues = () => {
     setDisabledInput(!disabledInput);
     setEditActivated(!editActivated);
@@ -60,6 +53,7 @@ const User = () => {
     });
   };
 
+  // function to save our changes in the data as it was persistent.
   const saveData = () => {
     if (userInfosCopy != userInfos) {
       setUserInfos(userInfosCopy);
@@ -68,25 +62,36 @@ const User = () => {
     }
   };
 
-  //   console.log("User Infos : ", userInfos, " User Infos Copy : ", userInfosCopy);
-
+  // function to cancel our changers. It put back the original data.
   const cancelEdit = () => {
     setUserInfosCopy(userInfos);
     setDisabledInput(!disabledInput);
     setEditActivated(!editActivated);
   };
-  //   console.log("User Infos : ", userInfos, " User Infos Copy : ", userInfosCopy);
 
-  //   console.log("USER PAGE :", userData);
+  const goBack = () => {
+    navigate("/", { replace: true });
+  };
 
   return (
     <Container maxWidth="lg" className="user-page">
       <Grid
         container
         // spacing={{ xs: 2, md: 3 }}
-        columns={{ xs: 4, sm: 6, md: 8 }}
+        columns={{ xs: 6, sm: 6, md: 8 }}
         alignItems="stretch"
       >
+        <Stack>
+          <Button
+            variant="contained"
+            startIcon={<ArrowBack />}
+            size="small"
+            className="back-button"
+            onClick={goBack}
+          >
+            Back
+          </Button>
+        </Stack>
         <Grid item xs={12} sm={6} md={8}>
           <Card>
             <CardHeader

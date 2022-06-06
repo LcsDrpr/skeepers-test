@@ -7,7 +7,7 @@ import {
   Link,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import { useState } from "react";
 
 interface InfosProps {
   title: string;
